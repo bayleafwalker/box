@@ -8,9 +8,10 @@ ID:     1
   [done    ] #3  Write baseline feature briefs for staged delivery slices  (assignee: -)
 
 --- Track: ops ---
-  health: 2 items — 2 done (100%), 0 active, 0 pending, 0 blocked (0%)
+  health: 3 items — 3 done (100%), 0 active, 0 pending, 0 blocked (0%)
   [done    ] #1  Scope sprintctl and kctl databases to the repo  (assignee: -)
   [done    ] #2  Add shared sprint and knowledge render artifacts  (assignee: -)
+  [done    ] #21  Publish initial box scaffold to GitHub  (assignee: codex)
 
 --- Track: planning ---
   health: 2 items — 2 done (100%), 0 active, 0 pending, 0 blocked (0%)
@@ -21,4 +22,4 @@ ID:     1
   health: 1 items — 1 done (100%), 0 active, 0 pending, 0 blocked (0%)
   [done    ] #4  Write baseline requirements for staged backlog slices  (assignee: -)
 
-Rendered: 2026-03-29T13:38:57Z
+Rendered: 2026-03-29T18:59:26Z

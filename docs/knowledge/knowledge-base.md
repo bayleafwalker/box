@@ -1,7 +1,15 @@
 # Knowledge Base — box
-Generated: 2026-03-29T13:39:24Z
+Generated: 2026-03-29T18:59:52Z
 
 ## Decisions
+
+### Bootstrap an empty GitHub repo with a direct main publish after local verification
+Source: track: ops, sprint: 1
+Tags: workflow, release, github, bootstrap
+
+Because bayleafwalker/box was empty, the initial publication path was a verified root commit pushed directly to main instead of a draft PR. The publish used the repo-local ignore set, a full staged scaffold commit, and a preceding make verify-fast run so the first remote state matches the validated local baseline.
+
+---
 
 ### Use service-owned Postgres with outbox or inbox integration instead of cross-service reads
 Source: track: planning, sprint: 1

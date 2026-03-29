@@ -1,0 +1,12 @@
+service: catalog-service
+version: 0.1.0
+apis:
+  - name: catalog
+    openapi: contracts/catalog-service/openapi.yaml
+events_emitted:
+  - subject: catalog.item.created
+    schema: contracts/catalog-service/events/catalog.item.created.schema.json
+events_consumed: []
+invariants:
+  - item identifiers are unique within the catalog
+  - prices must be explicit and currency-qualified

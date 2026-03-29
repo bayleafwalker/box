@@ -1,0 +1,11 @@
+{
+  "event_id": "evt_party_001",
+  "occurred_at": "2026-03-29T18:30:00Z",
+  "scenario": "hotdog-stand",
+  "party": {
+    "party_id": "pty_001",
+    "display_name": "Regular Lunch Crew",
+    "party_type": "organization",
+    "contact_email": "orders@regular-lunch.example"
+  }
+}

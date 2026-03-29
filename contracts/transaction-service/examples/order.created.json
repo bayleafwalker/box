@@ -1,0 +1,33 @@
+{
+  "event_id": "evt_order_001",
+  "occurred_at": "2026-03-29T18:32:00Z",
+  "scenario": "hotdog-stand",
+  "order": {
+    "order_id": "ord_001",
+    "customer_id": "pty_001",
+    "status": "accepted",
+    "payment_method": "card",
+    "lines": [
+      {
+        "item_id": "itm_hotdog",
+        "quantity": 2,
+        "unit_price": {
+          "amount": 6.5,
+          "currency": "EUR"
+        }
+      },
+      {
+        "item_id": "itm_soda",
+        "quantity": 1,
+        "unit_price": {
+          "amount": 2.5,
+          "currency": "EUR"
+        }
+      }
+    ],
+    "total": {
+      "amount": 15.5,
+      "currency": "EUR"
+    }
+  }
+}

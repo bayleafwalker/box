@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Service Contract Manifest",
+  "type": "object",
+  "required": [
+    "service",
+    "version",
+    "apis",
+    "events_emitted",
+    "events_consumed",
+    "invariants"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "service": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "apis": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["name", "openapi"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "openapi": {
+            "type": "string",
+            "pattern": "^contracts/.+/openapi\\.yaml$"
+          }
+        }
+      }
+    },
+    "events_emitted": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/eventReference"
+      }
+    },
+    "events_consumed": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/eventReference"
+      }
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "$defs": {
+    "eventReference": {
+      "type": "object",
+      "required": ["subject", "schema"],
+      "additionalProperties": false,
+      "properties": {
+        "subject": {
+          "type": "string",
+          "pattern": "^[a-z0-9.-]+$"
+        },
+        "schema": {
+          "type": "string",
+          "pattern": "^contracts/.+/events/.+\\.schema\\.json$"
+        }
+      }
+    }
+  }
+}

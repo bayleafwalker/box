@@ -1,0 +1,18 @@
+clusterName: box-demo
+endpoint: https://box-demo.example.internal:6443
+talosVersion: v1.11.5
+kubernetesVersion: v1.34.1
+allowSchedulingOnControlPlanes: true
+nodes:
+  - hostname: box-control-1
+    role: controlplane
+    installDisk: /dev/sda
+  - hostname: box-worker-1
+    role: worker
+    installDisk: /dev/sda
+network:
+  cni: cilium
+  podSubnets:
+    - 10.40.16.0/20
+  serviceSubnets:
+    - 10.40.8.0/21

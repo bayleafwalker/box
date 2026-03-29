@@ -1,0 +1,12 @@
+service: party-service
+version: 0.1.0
+apis:
+  - name: parties
+    openapi: contracts/party-service/openapi.yaml
+events_emitted:
+  - subject: party.created
+    schema: contracts/party-service/events/party.created.schema.json
+events_consumed: []
+invariants:
+  - party identifiers are unique within the service boundary
+  - contact email is optional but normalized when present

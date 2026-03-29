@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "order.created",
+  "type": "object",
+  "required": ["event_id", "occurred_at", "scenario", "order"],
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scenario": {
+      "type": "string"
+    },
+    "order": {
+      "type": "object",
+      "required": [
+        "order_id",
+        "customer_id",
+        "status",
+        "payment_method",
+        "lines",
+        "total"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "order_id": {
+          "type": "string"
+        },
+        "customer_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["accepted", "fulfilled"]
+        },
+        "payment_method": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": ["item_id", "quantity", "unit_price"],
+            "additionalProperties": false,
+            "properties": {
+              "item_id": {
+                "type": "string"
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "unit_price": {
+                "type": "object",
+                "required": ["amount", "currency"],
+                "additionalProperties": false,
+                "properties": {
+                  "amount": {
+                    "type": "number"
+                  },
+                  "currency": {
+                    "type": "string",
+                    "minLength": 3,
+                    "maxLength": 3
+                  }
+                }
+              }
+            }
+          }
+        },
+        "total": {
+          "type": "object",
+          "required": ["amount", "currency"],
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            }
+          }
+        }
+      }
+    }
+  }
+}

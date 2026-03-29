@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Scenario Pack",
+  "type": "object",
+  "required": [
+    "scenario",
+    "version",
+    "description",
+    "contract_versions",
+    "services_enabled",
+    "entity_mappings",
+    "seed_data",
+    "simulation"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "scenario": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contract_versions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^\\d+\\.\\d+\\.\\d+$"
+      }
+    },
+    "services_enabled": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      }
+    },
+    "entity_mappings": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object"
+      }
+    },
+    "seed_data": {
+      "type": "object",
+      "minProperties": 1
+    },
+    "simulation": {
+      "type": "object",
+      "required": ["timezone"],
+      "properties": {
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "step_interval_seconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "volumes": {
+          "type": "object"
+        },
+        "peaks": {
+          "type": "array"
+        },
+        "payment_mix": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "anomalies": {
+          "type": "object"
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

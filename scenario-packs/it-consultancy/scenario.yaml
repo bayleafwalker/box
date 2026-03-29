@@ -1,0 +1,36 @@
+scenario: it-consultancy
+version: 0.1.0
+description: Lower-volume consultancy scenario with retainers, projects, and monthly transaction rhythms.
+contract_versions:
+  party-service: 0.1.0
+  catalog-service: 0.1.0
+  transaction-service: 0.1.0
+services_enabled:
+  - party-service
+  - catalog-service
+  - transaction-service
+entity_mappings:
+  party:
+    customer_types: [client, contractor, employee]
+  offering:
+    item_types: [hourly_rate, project_package, retainer]
+  transaction:
+    order_types: [timesheet_entry, milestone_sale]
+seed_data:
+  clients:
+    active_count: 12
+  offerings:
+    packages: [architecture-review, sprint-team, managed-retainer]
+simulation:
+  timezone: Europe/Helsinki
+  step_interval_seconds: 300
+  volumes:
+    project_starts_per_month: 4
+    consultant_count: 15
+  payment_mix:
+    invoice: 0.70
+    bank_transfer: 0.20
+    card: 0.10
+  anomalies:
+    late_approval_probability: 0.08
+    change_request_spike_probability: 0.05

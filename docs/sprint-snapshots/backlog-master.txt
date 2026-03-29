@@ -1,0 +1,31 @@
+SPRINT: Backlog - Delivery Stages A-D  [planned]
+Goal:   Stage delivery from service kernel through simulation, platform, and replacement proof
+ID:     2
+
+--- Track: stage-1-kernel ---
+  health: 4 items — 0 done (0%), 0 active, 4 pending, 0 blocked (0%)
+  [pending ] #6  Implement party-service reference API, persistence, and tests  (assignee: -)
+  [pending ] #7  Implement catalog-service reference API, persistence, and tests  (assignee: -)
+  [pending ] #8  Implement transaction-service reference API, validation, and event publication  (assignee: -)
+  [pending ] #9  Add a gateway entry surface for kernel APIs  (assignee: -)
+
+--- Track: stage-2-simulation ---
+  health: 4 items — 0 done (0%), 0 active, 4 pending, 0 blocked (0%)
+  [pending ] #10  Build the scenario registry and loader for scenario packs  (assignee: -)
+  [pending ] #11  Implement the deterministic simulation engine with replay seed support  (assignee: -)
+  [pending ] #12  Add hotdog-stand and IT consultancy simulation policies and example runs  (assignee: -)
+  [pending ] #13  Add simulator metrics, rejection counters, and run audit trail  (assignee: -)
+
+--- Track: stage-3-platform ---
+  health: 3 items — 0 done (0%), 0 active, 3 pending, 0 blocked (0%)
+  [pending ] #14  Package kernel services and simulator as Helm charts  (assignee: -)
+  [pending ] #15  Add Flux platform composition for CNPG, NATS, ingress, and observability  (assignee: -)
+  [pending ] #16  Finish the Hetzner and Talos bootstrap path and operations runbook  (assignee: -)
+
+--- Track: stage-4-replacement ---
+  health: 3 items — 0 done (0%), 0 active, 3 pending, 0 blocked (0%)
+  [pending ] #17  Add a contract conformance harness for swappable services  (assignee: -)
+  [pending ] #18  Implement an alternate party or CRM service and swap demo  (assignee: -)
+  [pending ] #19  Write the replacement rollout and rollback playbook  (assignee: -)
+
+Rendered: 2026-03-29T13:22:05Z

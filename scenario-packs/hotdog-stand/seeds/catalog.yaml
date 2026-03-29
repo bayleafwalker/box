@@ -1,0 +1,13 @@
+items:
+  - item_id: itm_hotdog
+    name: Classic Hotdog
+    item_type: food
+    base_price:
+      amount: 6.5
+      currency: EUR
+  - item_id: itm_soda
+    name: Soda
+    item_type: drink
+    base_price:
+      amount: 2.5
+      currency: EUR

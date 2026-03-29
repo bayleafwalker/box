@@ -1,0 +1,7 @@
+seed: 42
+clock:
+  start_at: "2026-04-01T09:00:00+03:00"
+  tick_seconds: 60
+traffic:
+  weekday_lunch_multiplier: 2.4
+  weather_sensitivity: low

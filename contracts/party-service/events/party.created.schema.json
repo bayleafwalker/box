@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "party.created",
+  "type": "object",
+  "required": ["event_id", "occurred_at", "scenario", "party"],
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scenario": {
+      "type": "string"
+    },
+    "party": {
+      "type": "object",
+      "required": ["party_id", "display_name", "party_type"],
+      "additionalProperties": false,
+      "properties": {
+        "party_id": {
+          "type": "string"
+        },
+        "display_name": {
+          "type": "string"
+        },
+        "party_type": {
+          "type": "string",
+          "enum": ["person", "organization"]
+        },
+        "contact_email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    }
+  }
+}

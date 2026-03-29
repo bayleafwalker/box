@@ -1,0 +1,40 @@
+scenario: hotdog-stand
+version: 0.1.0
+description: High-volume counter-service food stand with lunch peaks and light anomaly injection.
+contract_versions:
+  party-service: 0.1.0
+  catalog-service: 0.1.0
+  transaction-service: 0.1.0
+services_enabled:
+  - party-service
+  - catalog-service
+  - transaction-service
+entity_mappings:
+  party:
+    customer_types: [walk_in, regular]
+  offering:
+    item_types: [food, drink, combo]
+  transaction:
+    order_types: [counter_sale]
+seed_data:
+  customers:
+    regular_count: 25
+  catalog:
+    items: [classic-hotdog, veggie-hotdog, fries, soda, coffee]
+simulation:
+  timezone: Europe/Helsinki
+  step_interval_seconds: 60
+  volumes:
+    weekday_orders_mean: 180
+    weekend_orders_mean: 260
+  peaks:
+    - start: "11:00"
+      end: "14:00"
+      multiplier: 2.4
+  payment_mix:
+    card: 0.82
+    cash: 0.10
+    mobile: 0.08
+  anomalies:
+    refund_spike_probability: 0.01
+    stockout_probability: 0.03

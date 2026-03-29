@@ -1,0 +1,7 @@
+seed: 314
+clock:
+  start_at: "2026-04-01T08:00:00+03:00"
+  tick_seconds: 300
+traffic:
+  month_end_multiplier: 1.6
+  approval_delay_mode: moderate

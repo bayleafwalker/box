@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "catalog.item.created",
+  "type": "object",
+  "required": ["event_id", "occurred_at", "scenario", "item"],
+  "additionalProperties": false,
+  "properties": {
+    "event_id": {
+      "type": "string"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scenario": {
+      "type": "string"
+    },
+    "item": {
+      "type": "object",
+      "required": ["item_id", "name", "item_type", "base_price"],
+      "additionalProperties": false,
+      "properties": {
+        "item_id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "item_type": {
+          "type": "string"
+        },
+        "base_price": {
+          "type": "object",
+          "required": ["amount", "currency"],
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "currency": {
+              "type": "string",
+              "minLength": 3,
+              "maxLength": 3
+            }
+          }
+        }
+      }
+    }
+  }
+}

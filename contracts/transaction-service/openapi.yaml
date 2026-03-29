@@ -1,0 +1,123 @@
+openapi: 3.1.0
+info:
+  title: transaction-service API
+  version: 0.1.0
+  description: Contract for orders and sales transactions.
+paths:
+  /orders:
+    get:
+      summary: List orders
+      operationId: listOrders
+      responses:
+        "200":
+          description: Orders currently known by the service
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+    post:
+      summary: Create an order
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateOrderRequest"
+      responses:
+        "201":
+          description: Order created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+  /orders/{orderId}:
+    get:
+      summary: Fetch an order by identifier
+      operationId: getOrder
+      parameters:
+        - in: path
+          name: orderId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Order found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+components:
+  schemas:
+    Money:
+      type: object
+      required: [amount, currency]
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+    OrderLine:
+      type: object
+      required:
+        - itemId
+        - quantity
+        - unitPrice
+      properties:
+        itemId:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        unitPrice:
+          $ref: "#/components/schemas/Money"
+    CreateOrderRequest:
+      type: object
+      required:
+        - customerId
+        - scenario
+        - lines
+      properties:
+        customerId:
+          type: string
+        scenario:
+          type: string
+        paymentMethod:
+          type: string
+        lines:
+          type: array
+          minItems: 1
+          items:
+            $ref: "#/components/schemas/OrderLine"
+    Order:
+      type: object
+      required:
+        - orderId
+        - customerId
+        - scenario
+        - status
+        - lines
+        - total
+      properties:
+        orderId:
+          type: string
+        customerId:
+          type: string
+        scenario:
+          type: string
+        status:
+          type: string
+          enum: [pending, accepted, rejected, fulfilled]
+        paymentMethod:
+          type: string
+        lines:
+          type: array
+          items:
+            $ref: "#/components/schemas/OrderLine"
+        total:
+          $ref: "#/components/schemas/Money"

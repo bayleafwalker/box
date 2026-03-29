@@ -1,0 +1,24 @@
+SPRINT: Sprint 0 - Baseline And Execution Model  [active]
+Goal:   Onboard sprintctl and kctl, establish the baseline docs, and seed the staged backlog
+Dates:  2026-03-29 to 2026-04-05
+ID:     1
+
+--- Track: docs ---
+  health: 1 items — 1 done (100%), 0 active, 0 pending, 0 blocked (0%)
+  [done    ] #3  Write baseline feature briefs for staged delivery slices  (assignee: -)
+
+--- Track: ops ---
+  health: 2 items — 2 done (100%), 0 active, 0 pending, 0 blocked (0%)
+  [done    ] #1  Scope sprintctl and kctl databases to the repo  (assignee: -)
+  [done    ] #2  Add shared sprint and knowledge render artifacts  (assignee: -)
+
+--- Track: planning ---
+  health: 2 items — 2 done (100%), 0 active, 0 pending, 0 blocked (0%)
+  [done    ] #5  Seed the staged backlog and initial knowledge entries  (assignee: -)
+  [done    ] #20  Document target architecture, data boundaries, and repo working practices  (assignee: codex)
+
+--- Track: requirements ---
+  health: 1 items — 1 done (100%), 0 active, 0 pending, 0 blocked (0%)
+  [done    ] #4  Write baseline requirements for staged backlog slices  (assignee: -)
+
+Rendered: 2026-03-29T13:38:57Z

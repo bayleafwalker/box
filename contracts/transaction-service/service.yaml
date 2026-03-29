@@ -1,0 +1,17 @@
+service: transaction-service
+version: 0.1.0
+apis:
+  - name: orders
+    openapi: contracts/transaction-service/openapi.yaml
+events_emitted:
+  - subject: order.created
+    schema: contracts/transaction-service/events/order.created.schema.json
+events_consumed:
+  - subject: party.created
+    schema: contracts/party-service/events/party.created.schema.json
+  - subject: catalog.item.created
+    schema: contracts/catalog-service/events/catalog.item.created.schema.json
+invariants:
+  - order.customer_id must reference a known party
+  - order.lines[*].item_id must reference known catalog items
+  - order totals must equal the sum of priced line amounts

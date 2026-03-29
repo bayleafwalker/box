@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "business-in-a-box"
+version = "0.1.0"
+description = "Contract-first business platform scaffold with scenario validation."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "jsonschema>=4.23",
+    "PyYAML>=6.0",
+]
+
+[project.scripts]
+box-validate = "apps.validator.main:main"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.11",
+    "pytest>=8.0",
+    "ruff>=0.11",
+    "types-PyYAML>=6.0",
+]
+
+[tool.setuptools]
+packages = { find = { include = ["apps*", "packages*"] } }
+
+[tool.mypy]
+python_version = "3.11"
+files = ["apps", "packages", "tests"]
+ignore_missing_imports = true
+warn_unused_configs = true
+explicit_package_bases = true
+namespace_packages = true
+exclude = '(^\.venv/|^docs/|^infra/)'
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = [".git", ".venv", "__pycache__"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+ignore = ["E501"]

@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: catalog-service API
+  version: 0.1.0
+  description: Contract for offers, goods, and priced services.
+paths:
+  /items:
+    get:
+      summary: List catalog items
+      operationId: listItems
+      responses:
+        "200":
+          description: Catalog items currently available
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/CatalogItem"
+    post:
+      summary: Create a catalog item
+      operationId: createItem
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateCatalogItemRequest"
+      responses:
+        "201":
+          description: Catalog item created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogItem"
+  /items/{itemId}:
+    get:
+      summary: Fetch a catalog item by identifier
+      operationId: getItem
+      parameters:
+        - in: path
+          name: itemId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Catalog item found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CatalogItem"
+components:
+  schemas:
+    Money:
+      type: object
+      required: [amount, currency]
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
+          minLength: 3
+          maxLength: 3
+    CreateCatalogItemRequest:
+      type: object
+      required:
+        - name
+        - itemType
+        - basePrice
+      properties:
+        name:
+          type: string
+        itemType:
+          type: string
+        basePrice:
+          $ref: "#/components/schemas/Money"
+        active:
+          type: boolean
+          default: true
+    CatalogItem:
+      type: object
+      required:
+        - itemId
+        - name
+        - itemType
+        - basePrice
+        - active
+      properties:
+        itemId:
+          type: string
+        name:
+          type: string
+        itemType:
+          type: string
+        basePrice:
+          $ref: "#/components/schemas/Money"
+        active:
+          type: boolean

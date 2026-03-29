@@ -1,0 +1,7 @@
+clients:
+  - party_id: pty_client_001
+    display_name: Northwind Advisory
+    party_type: organization
+  - party_id: pty_client_002
+    display_name: Kallio Logistics
+    party_type: organization

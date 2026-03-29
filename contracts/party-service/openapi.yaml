@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: party-service API
+  version: 0.1.0
+  description: Contract for customer and organization identities.
+paths:
+  /parties:
+    get:
+      summary: List parties
+      operationId: listParties
+      responses:
+        "200":
+          description: Parties currently known by the service
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Party"
+    post:
+      summary: Create a party
+      operationId: createParty
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreatePartyRequest"
+      responses:
+        "201":
+          description: Party created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Party"
+  /parties/{partyId}:
+    get:
+      summary: Fetch a party by identifier
+      operationId: getParty
+      parameters:
+        - in: path
+          name: partyId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Party found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Party"
+components:
+  schemas:
+    CreatePartyRequest:
+      type: object
+      required:
+        - displayName
+        - partyType
+      properties:
+        displayName:
+          type: string
+        partyType:
+          type: string
+          enum: [person, organization]
+        contactEmail:
+          type: string
+          format: email
+        externalReference:
+          type: string
+    Party:
+      type: object
+      required:
+        - partyId
+        - displayName
+        - partyType
+      properties:
+        partyId:
+          type: string
+        displayName:
+          type: string
+        partyType:
+          type: string
+          enum: [person, organization]
+        contactEmail:
+          type: string
+          format: email
+        externalReference:
+          type: string

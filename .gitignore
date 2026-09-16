@@ -25,3 +25,4 @@ terraform.tfstate.*
 docs/knowledge/*
 !docs/knowledge/README.md
 !docs/knowledge/knowledge-base.md
+.envrc.local
